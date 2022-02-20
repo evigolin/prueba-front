@@ -8,7 +8,6 @@ import { AuthGuard } from './_helpers/auth.guard';
 import { NavigateGuard } from './_helpers/navigate.guard';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
-const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
 
 const routes: Routes = [
   {
@@ -31,11 +30,6 @@ const routes: Routes = [
     component: CirclesComponent,
     canActivate: [AuthGuard]
   },
-  // {
-  //   path: 'users',
-  //   loadChildren: usersModule,
-  //   canActivate: [AuthGuard]
-  // },
   {
     path: 'account',
     loadChildren: accountModule,

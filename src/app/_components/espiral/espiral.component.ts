@@ -7,11 +7,12 @@ declare const getPrintMatrix: (...args: any[]) => void;
   styleUrls: ['./espiral.component.scss']
 })
 export class EspiralComponent implements OnInit {
+  loading = false;
+
   constructor() { }
 
   ngOnInit(): void {
-    console.log('spiral');
-    
+
   }
 
 }
