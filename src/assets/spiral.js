@@ -161,9 +161,3 @@ function genSubmatrix (m, n, offset) {
 
   return submatrix;
 }
-
-// console.log('Given "m" equals to ', m, ' and "n" equals to ', n);
-// console.log('\n');
-// console.log('The spiral sorted array is: ', printMatrix(m, n));
-
-// module.exports = getPrintMatrix(m);

@@ -95,8 +95,6 @@ export class AccountService {
     const userOnStorage = localStorage.getItem('user');
 
     if (userOnStorage) {
-      console.log(userOnStorage);
-      console.log(JSON.parse(userOnStorage));
       this.userSubject.next(JSON.parse(userOnStorage));
     }
   }

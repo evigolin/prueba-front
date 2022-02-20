@@ -24,15 +24,6 @@ export class CirclesComponent implements OnInit {
   ngOnInit(): void {
     this.addCircles();
     this.addCircles();
-    // this.t = this.findCircleCollisions(this.x1, this.y1, this.x2, this.y2, this.r1, this.r2);
-
-    // if (this.t == 1)
-    //   console.log("círculo toque para" + " Uno al otro.");
-    // else if (this.t < 0)
-    //   console.log("Círculo no tocar" + " Uno al otro.");
-    // else
-    //   console.log("Intersección del círculo" + " Uno al otro.")
-
   }
 
   get f() {

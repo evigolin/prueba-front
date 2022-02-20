@@ -12,15 +12,15 @@ export class LayoutComponent implements OnInit {
   constructor(
     private router: Router,
     private accountService: AccountService
-) {
+  ) {
     // redirect to home if already logged in
     if (this.accountService.userValue) {
-        this.router.navigate(['/']);
+      this.router.navigate(['/']);
     }
-}
+  }
 
-ngOnInit(): void {
+  ngOnInit(): void {
     console.log('hola');
-    
-}
+
+  }
 }
