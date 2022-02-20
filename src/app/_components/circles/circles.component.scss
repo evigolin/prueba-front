@@ -1,13 +1,24 @@
 :host {
     .form-control-array {
         display: flex;
+        margin: auto;
 
         .form-control-input {
             margin-right: 1rem;
 
             label {
-                margin-right: .5rem;
+                margin-right: 0.5rem;
             }
-          }
+
+            input[type="number"]::-webkit-inner-spin-button,
+            input[type="number"]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            input[type="number"] {
+                -moz-appearance: textfield;
+            }
+        }
     }
 }
