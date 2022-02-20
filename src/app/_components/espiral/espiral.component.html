@@ -44,7 +44,7 @@
             <div class="print-prime">
                 output: [
                 <ng-container *ngFor="let arr of output; let i = index;">
-                    {{arr}}
+                    {{ i < (array.length - 1) ?  arr + ', ' : arr}}
                 </ng-container>
                 ]
             </div>
