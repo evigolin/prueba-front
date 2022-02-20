@@ -1,0 +1,24 @@
+<div class="card">
+    <h4 class="card-header">Números Primos</h4>
+    <div class="card-body">
+        <div class="div-questions">
+            <label for="username">Ingrese la cantidad de números primos que desea que se generen:</label>
+            <input [disabled]="flag" [type]="'number'" (ngModelChange)="printNPrimers($event)" type="text" placeholder="0"
+                autocomplete="off" [(ngModel)]="quantityPrimers" [ngModelOptions]="{standalone: true}" />
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="div-questions">
+            <label for="username">Numeros primos generados: </label>
+            <div class="print-prime">
+                <span>[ </span>
+                <ng-container *ngIf="!flag">
+                    <span *ngFor="let prime of primers; let i = index;">{{ i < (primers.length - 1) ? prime + ',' : prime}}</span>
+                    <span> ]</span>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
