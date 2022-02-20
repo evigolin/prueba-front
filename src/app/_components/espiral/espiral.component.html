@@ -1,1 +1,53 @@
-<p>espiral works!</p>
+<div class="card">
+    <h4 class="card-header text-center">printMatrix</h4>
+    <div class="card-body">
+        <div class="form-group">
+            <div class="form-control-array">
+                <div class="form-group form-control-input">
+                    <label for="name" class="mb-2 mt-2">Ingrese el valor de n: </label> <br>
+                    <input type="number" (ngModelChange)="getSize($event)" [(ngModel)]="n" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" *ngIf="n && n > 0">
+            <div class="form-control-array">
+                <div class="form-group form-control-input">
+                    <label for="name" class="mb-2 mt-2">Ingrese valor de la matriz: </label> <br>
+                    <input type="number" [(ngModel)]="valor" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group text-center mb-3" *ngIf="n && n > 0">
+            <button type="button" class="btn btn-primary mt-3" (click)="addValue($event)">Agregar Valor</button>
+        </div>
+    </div>
+</div>
+<div class="card" *ngIf="array.length > 0">
+    <div class="card-body">
+        <div class="div-questions">
+            <div class="print-prime">
+                Matriz: <br>
+                <ng-container *ngFor="let arr of array; let i = index;">
+                    <ng-container *ngIf="i%n == 0 && i!==0">
+                        <br>
+                    </ng-container>
+                    {{arr}}
+                </ng-container>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card" *ngIf="output.length > 0">
+    <div class="card-body">
+        <div class="div-questions">
+            <div class="print-prime">
+                output: [
+                <ng-container *ngFor="let arr of output; let i = index;">
+                    {{arr}}
+                </ng-container>
+                ]
+            </div>
+        </div>
+    </div>
+</div>

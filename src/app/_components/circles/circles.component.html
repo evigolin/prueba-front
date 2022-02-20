@@ -41,7 +41,7 @@
             <div class="print-prime">
                 Circulos que colisionan: [
                 <ng-container *ngFor="let interception of intersectionCircle; let i = index;">
-                    Circulo {{interception['circle_1'] + 1}} - Circulo {{ interception['circle_2'] + 1}}
+                     {{ i < (intersectionCircle.length - 1) ?  ('Circulo ' + interception['circle_1'] + 1 + '-' + 'Circulo ' + interception['circle_2'] + 1) + ', ' : ('Circulo ' + interception['circle_1'] + 1 + '-' + 'Circulo ' + interception['circle_2'] + 1)}}
                 </ng-container>
                 ]
             </div>

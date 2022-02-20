@@ -5,19 +5,23 @@ var n;
 // const n = 4
 const BENCH_LABEL = 'BENCH';
 
-function getPrintMatrix(mOption, nOption) {
+function getPrintMatrix(arrayNumbers, nOption) {
+  console.log('Starting process matrix');
   // console.time(mOption);
   // console.time(nOption);
-  m = mOption;
+  m = arrayNumbers;
   n = nOption;
 
-  printMatrix (m, n);
+  console.log(arrayNumbers);
+  console.log(nOption);
+
+  return printMatrix (m, n);
 }
 
 function printMatrix (m, n) {
-  // console.time(BENCH_LABEL);
+  console.time(BENCH_LABEL);
   const result = spiralify(m, n, []);
-  // console.timeEnd(BENCH_LABEL);
+  console.timeEnd(BENCH_LABEL);
 
   return result;
 }

@@ -76,7 +76,7 @@ export class CirclesComponent implements OnInit {
 
   interceptionCircles(event: any) {
     this.intersectionCircle = [];
-    
+
     for (const circle of this.circles.controls) {
       if ((circle.get('x')?.value === '' || circle.get('x')?.value === null) || (circle.get('y')?.value === '' || circle.get('y')?.value === null) || (circle.get('radio')?.value === '' || circle.get('radio')?.value === null)) {
         return;
@@ -84,17 +84,19 @@ export class CirclesComponent implements OnInit {
     }
 
     for (let index = 0; index < this.circles.controls.length; index++) {
-      for (let i = (index + 1); i < this.circles.controls.length; i++) {
-        const resp = this.findCircleCollisions(this.circles.controls[index]?.value, this.circles.controls[i]?.value);
+      for (let i = 0; i < this.circles.controls.length; i++) {
+        if (index !== i) {
+          const resp = this.findCircleCollisions(this.circles.controls[index]?.value, this.circles.controls[i]?.value);
 
-        if (resp) {
-          const circle = {
-            circle_1: index,
-            circle_2: i
+          if (resp) {
+            const circle = {
+              circle_1: index,
+              circle_2: i
+            }
+            this.intersectionCircle.push(circle);
           }
-          this.intersectionCircle.push(circle);
         }
       }
-    } 
+    }
   }
 }
