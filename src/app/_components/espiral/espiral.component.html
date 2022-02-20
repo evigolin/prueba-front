@@ -41,7 +41,7 @@
 <div class="card" *ngIf="output.length > 0">
     <div class="card-body">
         <div class="div-questions">
-            <div class="print-prime">
+            <div class="print-prime text-wrap text-break">
                 output: [
                 <ng-container *ngFor="let arr of output; let i = index;">
                     {{ i < (array.length - 1) ?  arr + ', ' : arr}}

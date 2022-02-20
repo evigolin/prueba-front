@@ -32,6 +32,7 @@ export class PrimesComponent implements OnInit {
 
     if (!event) {
       this.flag = false;
+      return;
     }
 
     if (event) {
@@ -41,7 +42,7 @@ export class PrimesComponent implements OnInit {
 
           if (this.primers.length == event) {
             this.flag = false;
-            break;
+            return;
           }
         }
       }

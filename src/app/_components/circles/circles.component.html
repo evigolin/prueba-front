@@ -38,7 +38,7 @@
     <div class="card-body">
         <div class="div-questions">
             <label for="username">Circulos que se interceptan: </label>
-            <div class="print-prime">
+            <div class="print-prime text-wrap text-break">
                 Circulos que colisionan: [
                 <ng-container *ngFor="let interception of intersectionCircle; let i = index;">
                      {{ i < (intersectionCircle.length - 1) ?  ('Circulo ' + interception['circle_1'] + 1 + '-' + 'Circulo ' + interception['circle_2'] + 1) + ', ' : ('Circulo ' + interception['circle_1'] + 1 + '-' + 'Circulo ' + interception['circle_2'] + 1)}}

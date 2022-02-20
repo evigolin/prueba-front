@@ -13,13 +13,13 @@ declare function getPrintMatrix(
 export class EspiralComponent implements OnInit {
   title = 'FormArray in Angular Reactive forms';
   n!: number;
-  valor!: number;
+  valor!: number | string;
   array: number[] = [];
   output: number[] = [];
   spirals: string[] = [];
   size!: number;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     console.log('spiral');
@@ -31,10 +31,12 @@ export class EspiralComponent implements OnInit {
       this.n > 0 &&
       this.valor &&
       this.n !== null &&
-      this.valor !== null
+      this.valor !== null &&
+      this.valor !== ''
     ) {
       if (this.array.length < this.size) {
-        this.array.push(this.valor);
+        this.array.push(this.valor as number);
+        this.valor = '';
         return;
       }
 
@@ -42,20 +44,20 @@ export class EspiralComponent implements OnInit {
         this.getPrintMatriz();
         return;
       }
+    } else if (
+      !this.n ||
+      this.n === null
+    ) {
+      this.output = [];
+      this.array = [];
     }
-      
-    this.array = [];
-    
   }
 
   getSize(event: any) {
     this.size = event * event;
-    console.log(this.size);
   }
 
   getPrintMatriz() {
     this.output = getPrintMatrix(this.array, this.n);
-    console.log('Final Result');
-    console.log(this.output);
   }
 }
