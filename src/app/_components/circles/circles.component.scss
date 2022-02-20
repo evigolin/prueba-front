@@ -1,0 +1,13 @@
+:host {
+    .form-control-array {
+        display: flex;
+
+        .form-control-input {
+            margin-right: 1rem;
+
+            label {
+                margin-right: .5rem;
+            }
+          }
+    }
+}

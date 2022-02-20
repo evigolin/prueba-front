@@ -14,7 +14,6 @@ export class PrimesComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('Números primos');
-
   }
 
   isPrimeNum(num: number) {

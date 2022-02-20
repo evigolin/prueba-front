@@ -5,6 +5,7 @@ import { CirclesComponent } from './_components/circles/circles.component';
 import { EspiralComponent } from './_components/espiral/espiral.component';
 import { PrimesComponent } from './_components/primes/primes.component';
 import { AuthGuard } from './_helpers/auth.guard';
+import { NavigateGuard } from './_helpers/navigate.guard';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
@@ -37,7 +38,8 @@ const routes: Routes = [
   // },
   {
     path: 'account',
-    loadChildren: accountModule
+    loadChildren: accountModule,
+    canLoad: [NavigateGuard]
   },
 
   // otherwise redirect to home

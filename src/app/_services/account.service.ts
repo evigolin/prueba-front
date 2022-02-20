@@ -7,19 +7,20 @@ import { User } from '../_models/user';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AccountService {
-  private userSubject: BehaviorSubject<User> | BehaviorSubject<any> | BehaviorSubject<null>;
+  private userSubject:
+    | BehaviorSubject<User>
+    | BehaviorSubject<any>
+    | BehaviorSubject<null>;
   user: Observable<User>;
 
-  constructor(
-    private router: Router,
-    private http: HttpClient
-  ) {
+  constructor(private router: Router, private http: HttpClient) {
     // this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
-    this.userSubject = new BehaviorSubject<any>({});
+    this.userSubject = new BehaviorSubject<any>(null);
     this.user = this.userSubject.asObservable();
+    this.tryLoadFromLocal();
   }
 
   public get userValue(): User {
@@ -27,13 +28,19 @@ export class AccountService {
   }
 
   login(username: string, password: string) {
-    return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { username, password })
-      .pipe(map(user => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('user', JSON.stringify(user));
-        this.userSubject.next(user);
-        return user;
-      }));
+    return this.http
+      .post<User>(`${environment.apiUrl}/users/authenticate`, {
+        username,
+        password,
+      })
+      .pipe(
+        map((user) => {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('user', JSON.stringify(user));
+          this.userSubject.next(user);
+          return user;
+        })
+      );
   }
 
   logout() {
@@ -56,8 +63,8 @@ export class AccountService {
   }
 
   update(id: string, params: any) {
-    return this.http.put(`${environment.apiUrl}/users/${id}`, params)
-      .pipe(map(x => {
+    return this.http.put(`${environment.apiUrl}/users/${id}`, params).pipe(
+      map((x) => {
         // update stored user if the logged in user updated their own record
         if (id == this.userValue.id) {
           // update local storage
@@ -68,17 +75,29 @@ export class AccountService {
           this.userSubject.next(user);
         }
         return x;
-      }));
+      })
+    );
   }
 
   delete(id: string) {
-    return this.http.delete(`${environment.apiUrl}/users/${id}`)
-      .pipe(map(x => {
+    return this.http.delete(`${environment.apiUrl}/users/${id}`).pipe(
+      map((x) => {
         // auto logout if the logged in user deleted their own record
         if (id == this.userValue.id) {
           this.logout();
         }
         return x;
-      }));
+      })
+    );
+  }
+
+  private tryLoadFromLocal() {
+    const userOnStorage = localStorage.getItem('user');
+
+    if (userOnStorage) {
+      console.log(userOnStorage);
+      console.log(JSON.parse(userOnStorage));
+      this.userSubject.next(JSON.parse(userOnStorage));
+    }
   }
 }
