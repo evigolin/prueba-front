@@ -17,12 +17,13 @@
                 </div>
             </div>
         </div>
-        <div class="form-group text-center mb-3" *ngIf="n && n > 0">
-            <button type="button" class="btn btn-primary mt-3" (click)="addValue($event)">Agregar Valor</button>
+        <div class="form-group text-center mb-3 mt-3" *ngIf="n && n > 0">
+            <button style="margin-right: .5rem;" type="button" class="btn btn-primary" (click)="addValue($event)">Agregar Valor</button>
+            <button style="margin-left: .5rem;" type="button" class="btn btn-danger" (click)="clearStart()">Resetear</button>
         </div>
     </div>
 </div>
-<div class="card" *ngIf="array.length > 0">
+<div class="card" *ngIf="array.length > 0 && n && n !== null">
     <div class="card-body">
         <div class="div-questions">
             <div class="print-prime">
@@ -38,7 +39,7 @@
         </div>
     </div>
 </div>
-<div class="card" *ngIf="output.length > 0">
+<div class="card" *ngIf="output.length > 0 && n && n !== null">
     <div class="card-body">
         <div class="div-questions">
             <div class="print-prime text-wrap text-break">

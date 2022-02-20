@@ -54,10 +54,21 @@ export class EspiralComponent implements OnInit {
   }
 
   getSize(event: any) {
+    if (event === null || !event) {
+      this.output = [];
+      this.array = [];
+    }
+    
     this.size = event * event;
   }
 
   getPrintMatriz() {
     this.output = getPrintMatrix(this.array, this.n);
+  }
+
+  clearStart(){
+    this.output = [];
+    this.array = [];
+    this.valor = '';
   }
 }
